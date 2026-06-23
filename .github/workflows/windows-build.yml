@@ -79,7 +79,10 @@ jobs:
       - name: Build injector library x86
         shell: cmd
         working-directory: deps/GH-Injector-Library
-        run: msbuild "GH Injector Library.sln" /m /p:Configuration=Release /p:Platform=Win32 /p:PreferredToolArchitecture=x64 /p:CodePage=65001 /v:minimal
+        run: |
+          msbuild "GH Injector Library\GH Injector Library.vcxproj" /m /p:Configuration=Release /p:Platform=Win32 /p:PreferredToolArchitecture=x64 /p:CodePage=65001 /v:minimal
+          msbuild "GH Injector SM\GH Injector SM\GH Injector SM.vcxproj" /m /p:Configuration=Release /p:Platform=Win32 /p:PreferredToolArchitecture=x64 /p:CodePage=65001 /v:minimal
+          msbuild "GH Injector DNP\GH Injector DNP.vcxproj" /m /p:Configuration=Release /p:Platform=Win32 /p:PreferredToolArchitecture=x64 /p:CodePage=65001 /v:minimal
 
       - name: Restore .NET parser packages
         shell: cmd
