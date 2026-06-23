@@ -125,10 +125,31 @@ jobs:
             Copy-Item "GH Injector\Release\x86\GH Injector.exe" artifact -Force
           }
 
-          Get-ChildItem "deps\GH-Injector-Library\Release" -Recurse -Include *.exe,*.dll |
+          Get-ChildItem "deps\GH-Injector-Library" -Recurse -Include *.exe,*.dll |
+            Where-Object { $_.FullName -match "\\Release\\x(64|86)\\" } |
             Copy-Item -Destination artifact -Force
 
           Copy-Item "GH .NET Parser\bin\Release\net7.0\win-x64\publish\GH .NET Parser.exe" artifact -Force
+
+          $requiredFiles = @(
+            "GH Injector - x64.exe",
+            "GH Injector - x64.dll",
+            "GH Injector SM - x64.exe",
+            "GH Injector DNP - x64.dll",
+            "GH Injector SM - x86.exe",
+            "GH Injector DNP - x86.dll",
+            "GH .NET Parser.exe",
+            "Qt5Core.dll",
+            "Qt5Gui.dll",
+            "Qt5Widgets.dll",
+            "platforms\qwindows.dll"
+          )
+
+          foreach ($file in $requiredFiles) {
+            if (-not (Test-Path (Join-Path "artifact" $file))) {
+              throw "Required runtime file is missing from artifact: $file"
+            }
+          }
 
           Get-ChildItem artifact -Recurse | Select-Object FullName
 
