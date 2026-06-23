@@ -1,0 +1,89 @@
+name: Windows Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout GUI
+        uses: actions/checkout@v4
+
+      - name: Checkout injector library
+        uses: actions/checkout@v4
+        with:
+          repository: Broihon/GH-Injector-Library
+          path: deps/GH-Injector-Library
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Install Qt 5.15.2
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: 5.15.2
+          host: windows
+          target: desktop
+          arch: win64_msvc2019_64
+          cache: true
+
+      - name: Prepare Qt MSBuild
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          $vsixUrl = "https://download.qt.io/development_releases/vsaddin/3.0.2/qt-vsaddin-msvc2022-3.0.2.vsix"
+          $vsix = Join-Path $env:RUNNER_TEMP "qt-vsaddin.vsix"
+          $extract = Join-Path $env:RUNNER_TEMP "qt-vsaddin"
+          Invoke-WebRequest -Uri $vsixUrl -OutFile $vsix
+          Expand-Archive -Path $vsix -DestinationPath $extract -Force
+
+          $qtTargets = Get-ChildItem -Path $extract -Filter qt.targets -Recurse | Select-Object -First 1
+          if (-not $qtTargets) {
+            throw "qt.targets was not found in the Qt VS Tools package."
+          }
+
+          $qtMsBuild = $qtTargets.Directory.FullName
+          "QtMsBuild=$qtMsBuild" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "QTMSBUILDS=$qtMsBuild" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "QtToolsPath=$env:QT_ROOT_DIR\bin" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "QTDIR=$env:QT_ROOT_DIR" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
+          reg add "HKCU\Software\Digia\Versions" /v msvc2019_64 /t REG_SZ /d "$env:QT_ROOT_DIR" /f
+          reg add "HKCU\Software\Digia\Versions" /v DefaultQtVersion /t REG_SZ /d "msvc2019_64" /f
+
+      - name: Build injector library x64
+        shell: cmd
+        working-directory: deps/GH-Injector-Library
+        run: msbuild "GH Injector Library.sln" /m /p:Configuration=Release /p:Platform=x64 /p:PreferredToolArchitecture=x64 /p:CodePage=65001 /v:minimal
+
+      - name: Build GUI x64
+        shell: cmd
+        run: msbuild "GH Injector GUI.sln" /m /p:Configuration=Release /p:Platform=x64 /p:PreferredToolArchitecture=x64 /p:CodePage=65001 /v:minimal
+
+      - name: Collect artifacts
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          New-Item -ItemType Directory -Force -Path artifact | Out-Null
+
+          if (Test-Path "Release\x64") {
+            Copy-Item "Release\x64\*" artifact -Recurse -Force
+          }
+
+          if (Test-Path "deps\GH-Injector-Library\Release\x64") {
+            Copy-Item "deps\GH-Injector-Library\Release\x64\*" artifact -Recurse -Force
+          }
+
+          Get-ChildItem artifact -Recurse | Select-Object FullName
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GH-Injector-GUI-windows-x64
+          path: artifact
