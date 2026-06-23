@@ -76,9 +76,18 @@ jobs:
         working-directory: deps/GH-Injector-Library
         run: msbuild "GH Injector Library.sln" /m /p:Configuration=Release /p:Platform=x64 /p:PreferredToolArchitecture=x64 /p:CodePage=65001 /v:minimal
 
+      - name: Build injector library x86
+        shell: cmd
+        working-directory: deps/GH-Injector-Library
+        run: msbuild "GH Injector Library.sln" /m /p:Configuration=Release /p:Platform=Win32 /p:PreferredToolArchitecture=x64 /p:CodePage=65001 /v:minimal
+
       - name: Restore .NET parser packages
         shell: cmd
         run: dotnet restore "GH .NET Parser\GH .NET Parser.csproj"
+
+      - name: Publish .NET parser
+        shell: cmd
+        run: dotnet publish "GH .NET Parser\GH .NET Parser.csproj" -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
 
       - name: Build GUI x64
         shell: cmd
@@ -98,17 +107,25 @@ jobs:
             throw "Expected GUI executable was not produced: GH Injector GUI\Release\x64\GH Injector - x64.exe"
           }
 
-          if (Test-Path "GH Injector GUI\Release\x64") {
-            Copy-Item "GH Injector GUI\Release\x64\*" artifact -Recurse -Force
+          Copy-Item "GH Injector GUI\Release\x64\*.exe" artifact -Force
+          Copy-Item "GH Injector GUI\Release\x64\*.dll" artifact -Force
+
+          if (Test-Path "GH Injector GUI\Release\x64\platforms") {
+            Copy-Item "GH Injector GUI\Release\x64\platforms" artifact -Recurse -Force
           }
 
-          if (Test-Path "GH Injector\Release\x86") {
-            Copy-Item "GH Injector\Release\x86\*" artifact -Recurse -Force
+          if (Test-Path "GH Injector GUI\Release\x64\imageformats") {
+            Copy-Item "GH Injector GUI\Release\x64\imageformats" artifact -Recurse -Force
           }
 
-          if (Test-Path "deps\GH-Injector-Library\Release\x64") {
-            Copy-Item "deps\GH-Injector-Library\Release\x64\*" artifact -Recurse -Force
+          if (Test-Path "GH Injector\Release\x86\GH Injector.exe") {
+            Copy-Item "GH Injector\Release\x86\GH Injector.exe" artifact -Force
           }
+
+          Get-ChildItem "deps\GH-Injector-Library\Release" -Recurse -Include *.exe,*.dll |
+            Copy-Item -Destination artifact -Force
+
+          Copy-Item "GH .NET Parser\bin\Release\net7.0\win-x64\publish\GH .NET Parser.exe" artifact -Force
 
           Get-ChildItem artifact -Recurse | Select-Object FullName
 
