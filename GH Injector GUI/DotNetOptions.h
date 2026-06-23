@@ -1,6 +1,6 @@
 /*
  * Author:       Broihon
- * Copyright:    Guided Hacking™ © 2012-2023 Guided Hacking LLC
+ * Copyright:    Guided Hackingâ„¢ Â© 2012-2023 Guided Hacking LLC
 */
 
 #pragma once
