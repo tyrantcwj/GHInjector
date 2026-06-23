@@ -1,6 +1,6 @@
 /*
  * Author:       Broihon
- * Copyright:    Guided Hacking� � 2012-2023 Guided Hacking LLC
+ * Copyright:    Guided Hacking� � 2012-2023 Guided Hacking LLC
 */
 
 #include "pch.h"
@@ -31,14 +31,14 @@ GuiScanHook::GuiScanHook(QWidget * parent, FramelessWindow * FramelessParent, In
 		THROW("Failed to create string list model for hook scanner.");
 	}
 
-	m_HookList << "Select a" << "process first";
+	m_HookList << "请先" << "选择进程";
 
 	m_Model->setStringList(m_HookList);
 	ui.lv_scanhook->setModel(m_Model);
 
 	if (!m_InjectionLib->LoadingStatus())
 	{
-		emit StatusBox(false, "The GH injection library couldn't be found or wasn't loaded correctly.");
+		emit StatusBox(false, "找不到 GH 注入库，或未正确加载。");
 	}
 }
 
@@ -75,18 +75,18 @@ void GuiScanHook::get_from_inj_to_sh(int PID)
 {
 	m_PID = PID;
 
-	ui.btn_scan->setText("Scan PID " + QString::number(PID));
+	ui.btn_scan->setText("扫描 PID " + QString::number(PID));
 
 	emit scan_clicked();
 }
 
 void GuiScanHook::scan_clicked()
 {
-	update_title("Scan for hooks");
+	update_title("扫描 Hook");
 
 	if (!m_InjectionLib->LoadingStatus())
 	{
-		setItem({ L"Injection library not loaded" });
+		setItem({ L"注入库未加载" });
 		g_print("Injection library not loaded\n");
 
 		return;
@@ -94,7 +94,7 @@ void GuiScanHook::scan_clicked()
 
 	if (m_PID == 0)
 	{
-		setItem({ L"Please select a process" });
+		setItem({ L"请选择进程" });
 		g_print("No process selected\n");
 
 		return;
@@ -103,7 +103,7 @@ void GuiScanHook::scan_clicked()
 	HANDLE hProc = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, m_PID);
 	if (!hProc)
 	{
-		setItem({ L"Please select a process" });
+		setItem({ L"请选择进程" });
 		g_print("Invalid process id\n");
 
 		return;
@@ -112,7 +112,7 @@ void GuiScanHook::scan_clicked()
 	DWORD dwExitCode = STILL_ACTIVE;
 	if (!GetExitCodeProcess(hProc, &dwExitCode))
 	{
-		setItem({ L"Please select a process" });
+		setItem({ L"请选择进程" });
 		g_print("Process doesn't exist\n");
 
 		return;
@@ -122,7 +122,7 @@ void GuiScanHook::scan_clicked()
 
 	if (dwExitCode != STILL_ACTIVE)
 	{
-		setItem({ L"Please select a process" });
+		setItem({ L"请选择进程" });
 		g_print("Process doesn't exist\n");
 
 		return;
@@ -134,12 +134,12 @@ void GuiScanHook::scan_clicked()
 	if (!val_ret)
 	{
 		ui.lv_scanhook->setSelectionMode(QAbstractItemView::SelectionMode::NoSelection);
-		setItem({ L"Failed to scan for hooks" });
+		setItem({ L"扫描 Hook 失败" });
 	}
 	else if (tempHookList.empty())
 	{
 		ui.lv_scanhook->setSelectionMode(QAbstractItemView::SelectionMode::NoSelection);
-		setItem({ L"No hooks found" });
+		setItem({ L"未发现 Hook" });
 	}
 	else
 	{
@@ -150,11 +150,11 @@ void GuiScanHook::scan_clicked()
 
 		if (hook_count == 1)
 		{
-			update_title("1 hook found");
+			update_title("发现 1 个 Hook");
 		}
 		else
 		{
-			update_title(QString::number(hook_count) + " hooks found");
+			update_title(QString::number(hook_count) + " 个 Hook");
 		}
 	}
 }
@@ -180,7 +180,7 @@ void GuiScanHook::unhook_clicked()
 	bool res_ret = m_InjectionLib->RestoreInjectionFunctions(selected);
 	if (!res_ret)
 	{
-		StatusBox(false, "Failed to restore hook(s)");
+		StatusBox(false, "恢复 Hook 失败");
 	}
 
 	m_HookList.clear();

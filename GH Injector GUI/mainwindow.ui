@@ -3,7 +3,7 @@
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>主窗口</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -12,7 +12,7 @@
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Label</string>
+         <string>标签</string>
         </property>
        </widget>
       </item>
@@ -20,17 +20,17 @@
        <widget class="QComboBox" name="comboBox">
         <item>
          <property name="text">
-          <string>New Item</string>
+          <string>新项目</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>New Item 2</string>
+          <string>新项目 2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>New Item 3</string>
+          <string>新项目 3</string>
          </property>
         </item>
        </widget>
@@ -51,7 +51,7 @@
       <item>
        <widget class="QCheckBox" name="checkBox_4">
         <property name="text">
-         <string>Disable Widgets</string>
+         <string>禁用控件</string>
         </property>
         <property name="checked">
          <bool>false</bool>
@@ -63,7 +63,7 @@
     <item row="1" column="0">
      <widget class="QGroupBox" name="groupBox">
       <property name="title">
-       <string>GroupBox</string>
+       <string>分组框</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
@@ -72,7 +72,7 @@
           <number>-10</number>
          </property>
          <property name="text">
-          <string>RadioButton</string>
+          <string>单选按钮</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -82,21 +82,21 @@
        <item>
         <widget class="QRadioButton" name="radioButton_2">
          <property name="text">
-          <string>RadioButton</string>
+          <string>单选按钮</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QRadioButton" name="radioButton_3">
          <property name="text">
-          <string>RadioButton</string>
+          <string>单选按钮</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="checkBox">
          <property name="text">
-          <string>CheckBox</string>
+          <string>复选框</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -118,20 +118,20 @@
     <item row="1" column="1">
      <widget class="QGroupBox" name="groupBox_2">
       <property name="title">
-       <string>GroupBox</string>
+       <string>分组框</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QPushButton" name="pushButton">
          <property name="text">
-          <string>PushButton</string>
+          <string>按钮</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_2">
          <property name="text">
-          <string>PushButton</string>
+          <string>按钮</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -141,7 +141,7 @@
        <item>
         <widget class="QPushButton" name="pushButton_3">
          <property name="text">
-          <string>PushButton</string>
+          <string>按钮</string>
          </property>
          <property name="flat">
           <bool>true</bool>
@@ -151,7 +151,7 @@
        <item>
         <widget class="QPushButton" name="pushButton_4">
          <property name="text">
-          <string>PushButton</string>
+          <string>按钮</string>
          </property>
          <property name="default">
           <bool>true</bool>
@@ -168,7 +168,7 @@
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>TextEdit</string>
+        <string>文本编辑</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
@@ -186,7 +186,7 @@ p, li { white-space: pre-wrap; }
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Tab Table</string>
+        <string>表格页</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
@@ -293,17 +293,17 @@ p, li { white-space: pre-wrap; }
           </column>
           <item row="0" column="0">
            <property name="text">
-            <string>Cell 1/1</string>
+            <string>单元格 1/1</string>
            </property>
           </item>
           <item row="0" column="1">
            <property name="text">
-            <string>Cell 2/1</string>
+            <string>单元格 2/1</string>
            </property>
           </item>
           <item row="1" column="0">
            <property name="text">
-            <string>Cell 1/2</string>
+            <string>单元格 1/2</string>
            </property>
           </item>
          </widget>
@@ -315,7 +315,7 @@ p, li { white-space: pre-wrap; }
     <item row="2" column="1">
      <widget class="QGroupBox" name="groupBox_3">
       <property name="title">
-       <string>GroupBox</string>
+       <string>分组框</string>
       </property>
       <property name="checkable">
        <bool>true</bool>
@@ -357,7 +357,7 @@ p, li { white-space: pre-wrap; }
        <item row="0" column="0" colspan="2">
         <widget class="QLineEdit" name="lineEdit">
          <property name="text">
-          <string>test</string>
+          <string>测试</string>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
@@ -400,7 +400,7 @@ p, li { white-space: pre-wrap; }
    </property>
    <widget class="QMenu" name="menuTest">
     <property name="title">
-     <string>Test</string>
+     <string>测试</string>
     </property>
     <addaction name="actionTest"/>
     <addaction name="actionTest_2"/>
@@ -409,11 +409,11 @@ p, li { white-space: pre-wrap; }
    </widget>
    <widget class="QMenu" name="menuTest2">
     <property name="title">
-     <string>Test2</string>
+     <string>测试 2</string>
     </property>
     <widget class="QMenu" name="menuTest2_2">
      <property name="title">
-      <string>Test2</string>
+      <string>测试 2</string>
      </property>
      <addaction name="actionTest3"/>
      <addaction name="actionTest3_2"/>
@@ -437,7 +437,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionTest">
    <property name="text">
-    <string>Test</string>
+    <string>测试</string>
    </property>
   </action>
   <action name="actionTest_2">
@@ -448,7 +448,7 @@ p, li { white-space: pre-wrap; }
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Test</string>
+    <string>测试</string>
    </property>
   </action>
   <action name="actionTest_3">
@@ -456,17 +456,17 @@ p, li { white-space: pre-wrap; }
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Test</string>
+    <string>测试</string>
    </property>
   </action>
   <action name="actionTest3">
    <property name="text">
-    <string>Test3</string>
+    <string>测试 3</string>
    </property>
   </action>
   <action name="actionTest3_2">
    <property name="text">
-    <string>Test3</string>
+    <string>测试 3</string>
    </property>
   </action>
  </widget>

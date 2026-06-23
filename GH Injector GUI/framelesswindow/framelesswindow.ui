@@ -201,7 +201,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>Dock</string>
+            <string>停靠</string>
            </property>
            <property name="styleSheet">
             <string notr="true">#dockButton{
@@ -238,7 +238,7 @@
             </font>
            </property>
            <property name="toolTip">
-            <string>Minimize</string>
+            <string>最小化</string>
            </property>
            <property name="styleSheet">
             <string notr="true">#minimizeButton{
@@ -276,7 +276,7 @@
             </font>
            </property>
            <property name="toolTip">
-            <string>Close</string>
+            <string>关闭</string>
            </property>
            <property name="styleSheet">
             <string notr="true">#closeButton{

@@ -1,6 +1,6 @@
 /*
  * Author:       Broihon
- * Copyright:    Guided Hacking� � 2012-2023 Guided Hacking LLC
+ * Copyright:    Guided Hacking� � 2012-2023 Guided Hacking LLC
 */
 
 #include "pch.h"
@@ -19,10 +19,10 @@ DotNetOptionsWindow::DotNetOptionsWindow(const QString & title, const QStringLis
 	auto * lay_argument		= new QHBoxLayout();
 	auto * lay_options		= new QHBoxLayout();
 
-	lay_namespace->addWidget(new QLabel("Namespace:"), 0, Qt::AlignLeft);
-	lay_classname->addWidget(new QLabel("Classname:"), 0, Qt::AlignLeft);
-	lay_methodname->addWidget(new QLabel("Method:"), 0, Qt::AlignLeft);
-	lay_argument->addWidget(new QLabel("Arguement:"), 0, Qt::AlignLeft);
+	lay_namespace->addWidget(new QLabel("命名空间:"), 0, Qt::AlignLeft);
+	lay_classname->addWidget(new QLabel("类名:"), 0, Qt::AlignLeft);
+	lay_methodname->addWidget(new QLabel("方法:"), 0, Qt::AlignLeft);
+	lay_argument->addWidget(new QLabel("参数:"), 0, Qt::AlignLeft);
 
 	main_layout->addLayout(lay_namespace);
 	main_layout->addLayout(lay_classname);
@@ -127,10 +127,10 @@ DotNetOptionsWindow::DotNetOptionsWindow(const QString & title, const QStringLis
 
 	txt_Argument->setText(options[3]);
 
-	auto * btn_save = new QPushButton("Save");
+	auto * btn_save = new QPushButton("保存");
 	lay_options->addWidget(btn_save, 0, Qt::AlignLeft);
 
-	cb_Entrypoint = new QCheckBox("Use native entrypoint");
+	cb_Entrypoint = new QCheckBox("使用原生入口点");
 	lay_options->addWidget(cb_Entrypoint, 0, Qt::AlignRight);
 	cb_Entrypoint->setFixedWidth(170);
 

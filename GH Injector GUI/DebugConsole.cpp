@@ -1,6 +1,6 @@
 /*
  * Author:       Broihon
- * Copyright:    Guided Hacking� � 2012-2023 Guided Hacking LLC
+ * Copyright:    Guided Hacking� � 2012-2023 Guided Hacking LLC
 */
 
 #include "pch.h"
@@ -47,7 +47,7 @@ DebugConsole::DebugConsole(FramelessWindow * dock_parent, QWidget * parent)
 	m_FramelessParent->setMinimizeButton(false);
 	m_FramelessParent->setResizeHorizontal(true);
 	m_FramelessParent->setResizeBottom(true);
-	m_FramelessParent->setWindowTitle("Debug data");
+	m_FramelessParent->setWindowTitle("调试数据");
 	m_FramelessParent->setContent(this);
 	m_FramelessParent->setWindowIcon(QIcon(":/GuiMain/gh_resource/GH Icon.ico"));
 	m_FramelessParent->resize(QSize(150, 350));

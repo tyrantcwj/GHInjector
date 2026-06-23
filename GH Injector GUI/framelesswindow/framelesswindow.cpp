@@ -147,7 +147,7 @@ void FramelessWindow::setDockButton(bool active, bool docked = false, int direct
 					return;			
 			}
 
-			ui->dockButton->setToolTip("Undock");
+			ui->dockButton->setToolTip("取消停靠");
 		}
 		else
 		{
@@ -173,7 +173,7 @@ void FramelessWindow::setDockButton(bool active, bool docked = false, int direct
 					return;
 			}
 
-			ui->dockButton->setToolTip("Dock");
+			ui->dockButton->setToolTip("停靠");
 		}
 	}
 	else

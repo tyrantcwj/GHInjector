@@ -130,7 +130,7 @@
         <item>
          <widget class="QLabel" name="lbl_img">
           <property name="text">
-           <string>TextLabel</string>
+           <string>文本标签</string>
           </property>
          </widget>
         </item>
@@ -200,10 +200,10 @@
               </sizepolicy>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If checked error information is written to GH_Inj_Log.txt if the injection failed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果勾选，注入失败时会将错误信息写入 GH_Inj_Log.txt。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
-              <string>Generate error log</string>
+              <string>生成错误日志</string>
              </property>
              <property name="checked">
               <bool>true</bool>
@@ -213,7 +213,7 @@
            <item>
             <widget class="QSpinBox" name="sp_delay">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delays the injection by the specified interval.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;按指定时间延迟注入。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -222,7 +222,7 @@
               <string>ms</string>
              </property>
              <property name="prefix">
-              <string>Delay: </string>
+              <string>延迟: </string>
              </property>
              <property name="maximum">
               <number>60000</number>
@@ -273,10 +273,10 @@
               </sizepolicy>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select a process using the ProcessList™.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用进程列表选择进程。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
-              <string>Select &amp;process</string>
+              <string>选择进程(&amp;P)</string>
              </property>
             </widget>
            </item>
@@ -297,7 +297,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the target process by it's executable name (not unique).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;通过可执行文件名选择目标进程（不唯一）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string/>
@@ -318,7 +318,7 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>&amp;Reset settings</string>
+              <string>重置设置(&amp;R)</string>
              </property>
             </widget>
            </item>
@@ -334,7 +334,7 @@
               <string/>
              </property>
              <property name="text">
-              <string>&amp;Scan for hooks</string>
+              <string>扫描 Hook(&amp;S)</string>
              </property>
             </widget>
            </item>
@@ -351,23 +351,23 @@
               </sizepolicy>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The injector automatically closes after injecting the checkmarked dll(s).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;注入勾选的 DLL 后自动关闭程序。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
-              <string>Auto exit</string>
+              <string>自动退出</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QSpinBox" name="sp_timeout">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Interval the injector waits for the DllMain to finish.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;等待 DllMain 完成的时间。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="suffix">
               <string>ms</string>
              </property>
              <property name="prefix">
-              <string>Timeout: </string>
+              <string>超时: </string>
              </property>
              <property name="maximum">
               <number>60000</number>
@@ -391,7 +391,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the target process by it's identifier (unique but changes when the process restarts).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;通过 PID 选择目标进程（唯一，但进程重启后会变化）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>PID:</string>
@@ -441,10 +441,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hides the thread from debuggers.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;对调试器隐藏线程。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Hide from debugger</string>
+               <string>对调试器隐藏</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -460,10 +460,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips DLL_THREAD_ATTACH/DETACH calls to DllMains.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;跳过对 DllMain 的 DLL_THREAD_ATTACH/DETACH 调用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Skip thread attach</string>
+               <string>跳过线程附加</string>
               </property>
              </widget>
             </item>
@@ -476,10 +476,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Replaces the thread ID in the thread's TEB with the another thread's ID.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用另一个线程 ID 替换该线程 TEB 中的线程 ID。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Fake TID in TEB</string>
+               <string>伪造 TEB 中的 TID</string>
               </property>
              </widget>
             </item>
@@ -492,10 +492,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets the thread's start address to the entrypoint of the process.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;将线程起始地址设置为进程入口点。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Fake start address</string>
+               <string>伪造起始地址</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -514,10 +514,10 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the target process by it's executable name (not unique).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;通过可执行文件名选择目标进程（不唯一）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
-            <string>Process:</string>
+            <string>进程:</string>
            </property>
           </widget>
          </item>
@@ -565,10 +565,10 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The architecture of the currently selected target process.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;当前选中目标进程的架构。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
-            <string>Architecture:</string>
+            <string>架构:</string>
            </property>
           </widget>
          </item>
@@ -581,10 +581,10 @@
             <item row="1" column="1">
              <widget class="QCheckBox" name="cb_cloak">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show thread cloaking options.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;显示线程隐藏选项。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Cloak thread</string>
+               <string>隐藏线程</string>
               </property>
              </widget>
             </item>
@@ -597,21 +597,21 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Keep PEH: Doesn't modify the PE header of the dll(s).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;保留 PEH：不修改 DLL 的 PE 头。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <item>
                <property name="text">
-                <string>Keep PEH</string>
+                <string>保留 PEH</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Erase PEH</string>
+                <string>擦除 PEH</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Fake PEH</string>
+                <string>伪造 PEH</string>
                </property>
               </item>
              </widget>
@@ -625,17 +625,17 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hijacks a handle from another process.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;从其他进程劫持句柄。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Hijack handle</string>
+               <string>劫持句柄</string>
               </property>
              </widget>
             </item>
             <item row="1" column="0">
              <widget class="QComboBox" name="cmb_create">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;NtCreateThreadEx: Creates a simple remote thread to load the dll(s).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;NtCreateThreadEx：创建简单的远程线程来加载 DLL。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <item>
                <property name="text">
@@ -644,7 +644,7 @@
               </item>
               <item>
                <property name="text">
-                <string>Thread Hijacking</string>
+                <string>线程劫持</string>
                </property>
               </item>
               <item>
@@ -672,7 +672,7 @@
             <item row="0" column="0">
              <widget class="QComboBox" name="cmb_load">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;LoadLibraryExW is the default injection method which simply uses LoadLibraryExW.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;LoadLibraryExW 是默认注入方式，直接使用 LoadLibraryExW。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="whatsThis">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -699,7 +699,7 @@
               </item>
               <item>
                <property name="text">
-                <string>ManualMap</string>
+                <string>手动映射</string>
                </property>
               </item>
              </widget>
@@ -713,10 +713,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Renames the dll(s) randomly before injecting it/them.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;注入前随机重命名 DLL。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Random file name</string>
+               <string>随机文件名</string>
               </property>
              </widget>
             </item>
@@ -729,10 +729,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes the list entry of the dll(s) from the lists in the process enviroment block (not needed for manual mapping).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;从进程环境块列表中移除 DLL 条目（手动映射无需此项）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Unlink from PEB</string>
+               <string>从 PEB 取消链接</string>
               </property>
              </widget>
             </item>
@@ -745,10 +745,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Creates a copy of the dll(s) in the user's temp directory which then get(s) loaded into the target process.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;在用户临时目录创建 DLL 副本，并将副本加载到目标进程。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Load DLL copy</string>
+               <string>加载 DLL 副本</string>
               </property>
              </widget>
             </item>
@@ -770,7 +770,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the target process by it's identifier (unique but changes when the process restarts).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;通过 PID 选择目标进程（唯一，但进程重启后会变化）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string/>
@@ -786,10 +786,10 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If the injector finds the target process, it automatically injects the checkmarked dll(s).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;找到目标进程后自动注入勾选的 DLL。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
-            <string>Auto inject</string>
+            <string>自动注入</string>
            </property>
           </widget>
          </item>
@@ -814,10 +814,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Acquires the loader lock before executing the DllMain. The injection will proceed even if the loader lock wasn't acquired.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;执行 DllMain 前获取加载器锁。即使未获取到加载器锁，注入仍会继续。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Lock loader lock</string>
+               <string>锁定加载器锁</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -833,10 +833,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Shifts the image by a randomly generated amount of bytes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;按随机生成的字节数移动镜像&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Initialize security cookie</string>
+               <string>初始化安全 Cookie</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -852,10 +852,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Resolves dll imports and builds the IAT&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;解析 DLL 导入并构建 IAT&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Resolve imports</string>
+               <string>解析导入</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -871,10 +871,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Resolves delayed imports on initialization&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;初始化时解析延迟导入&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Resolve delay imports</string>
+               <string>解析延迟导入</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -890,10 +890,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Executes TLS callbacks and initializes static TLS data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;执行 TLS 回调并初始化静态 TLS 数据&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Execute TLS</string>
+               <string>执行 TLS</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -909,10 +909,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Executes the DllMain&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;执行 DllMain&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Run DllMain</string>
+               <string>运行 DllMain</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -928,10 +928,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removes data from the dlls PE header&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;移除 DLL PE 头中的数据&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Clean data directories</string>
+               <string>清理数据目录</string>
               </property>
              </widget>
             </item>
@@ -944,10 +944,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables exception handling&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;启用异常处理&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Enable exceptions</string>
+               <string>启用异常</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -963,10 +963,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Shifts the module base by a randomly generated offset.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;按随机生成的偏移移动模块基址。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Shift module base</string>
+               <string>移动模块基址</string>
               </property>
              </widget>
             </item>
@@ -979,10 +979,10 @@
                </sizepolicy>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets page protections based on section characteristics&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;根据节特征设置页面保护&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Set page protections</string>
+               <string>设置页面保护</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -992,10 +992,10 @@
             <item row="9" column="0">
              <widget class="QCheckBox" name="cb_memory">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Loads the specified file from memory instead of from disk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;从内存而不是磁盘加载指定文件。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Load from memory</string>
+               <string>从内存加载</string>
               </property>
              </widget>
             </item>
@@ -1005,10 +1005,10 @@
                <bool>false</bool>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Coming soon...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;即将推出...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Link to PEB</string>
+               <string>链接到 PEB</string>
               </property>
              </widget>
             </item>
@@ -1071,17 +1071,17 @@
           </column>
           <column>
            <property name="text">
-            <string>Filename</string>
+            <string>文件名</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Path</string>
+            <string>路径</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Type</string>
+            <string>类型</string>
            </property>
           </column>
           <column>
@@ -1099,20 +1099,20 @@
           <item row="1" column="0">
            <widget class="QPushButton" name="btn_tooltip">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You won't have to see this again.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;你不会再看到这些提示。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
-             <string>&amp;Disable tooltips</string>
+             <string>禁用提示(&amp;D)</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
            <widget class="QPushButton" name="btn_inject">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;No clue what this button does to be honest.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;执行注入操作。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
-             <string>&amp;Inject</string>
+             <string>注入(&amp;I)</string>
             </property>
            </widget>
           </item>
@@ -1145,7 +1145,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Open console.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;打开控制台。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
                <string/>
@@ -1161,7 +1161,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Open log.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;打开日志。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
                <string/>
@@ -1173,30 +1173,30 @@
           <item row="0" column="0">
            <widget class="QPushButton" name="btn_add">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select files from the explorer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;从资源管理器选择文件。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
-             <string>&amp;Add files</string>
+             <string>添加文件(&amp;A)</string>
             </property>
            </widget>
           </item>
           <item row="0" column="2">
            <widget class="QPushButton" name="btn_remove">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remove the selected files from the list.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;从列表中移除选中的文件。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
-             <string>Remove files</string>
+             <string>移除文件</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
            <widget class="QPushButton" name="btn_shortcut">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create a shortcut for the current injection settings.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;为当前注入设置创建快捷方式。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
-             <string>&amp;Create shortcut</string>
+             <string>创建快捷方式(&amp;C)</string>
             </property>
            </widget>
           </item>
@@ -1209,10 +1209,10 @@
              </size>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Open the release thread for help.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;打开发布页面获取帮助。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
-             <string>&amp;Help</string>
+             <string>帮助(&amp;H)</string>
             </property>
            </widget>
           </item>
@@ -1233,7 +1233,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Version</string>
+               <string>版本</string>
               </property>
              </widget>
             </item>

@@ -1,6 +1,6 @@
 /*
  * Author:       Broihon
- * Copyright:    Guided Hacking™ © 2012-2023 Guided Hacking LLC
+ * Copyright:    Guided Hackingï¿½ ï¿½ 2012-2023 Guided Hacking LLC
 */
 
 #include "pch.h"
@@ -14,7 +14,7 @@
 
 void __declspec(noreturn) THROW(std::string error_msg)
 {
-	MessageBoxA(NULL, "Error", error_msg.c_str(), NULL);
+	MessageBoxA(NULL, "é”™è¯¯", error_msg.c_str(), NULL);
 
 	throw std::exception(error_msg.c_str());
 }

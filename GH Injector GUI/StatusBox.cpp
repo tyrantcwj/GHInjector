@@ -1,6 +1,6 @@
 /*
  * Author:       Broihon
- * Copyright:    Guided Hacking� � 2012-2023 Guided Hacking LLC
+ * Copyright:    Guided Hacking� � 2012-2023 Guided Hacking LLC
 */
 
 #include "pch.h"
@@ -17,12 +17,12 @@ void StatusBox(bool ok, const QString & msg)
 
 	if (ok)
 	{
-		f_parent.setWindowTitle("Success");
+		f_parent.setWindowTitle("成功");
 		box = new(std::nothrow) QMessageBox(QMessageBox::Icon::Information, "", msg, QMessageBox::StandardButton::Ok, &f_parent, Qt::WindowType::FramelessWindowHint);
 	}
 	else
 	{
-		f_parent.setWindowTitle("Error");
+		f_parent.setWindowTitle("错误");
 		box = new(std::nothrow) QMessageBox(QMessageBox::Icon::Critical, "", msg, QMessageBox::StandardButton::Ok, &f_parent, Qt::WindowType::FramelessWindowHint);
 	}
 
@@ -30,11 +30,11 @@ void StatusBox(bool ok, const QString & msg)
 	{
 		if (ok)
 		{
-			MessageBoxW(NULL, msg.toStdWString().c_str(), L"Success", MB_ICONINFORMATION);
+			MessageBoxW(NULL, msg.toStdWString().c_str(), L"成功", MB_ICONINFORMATION);
 		}
 		else
 		{
-			MessageBoxW(NULL, msg.toStdWString().c_str(), L"Error", MB_ICONERROR);
+			MessageBoxW(NULL, msg.toStdWString().c_str(), L"错误", MB_ICONERROR);
 		}
 
 		return;

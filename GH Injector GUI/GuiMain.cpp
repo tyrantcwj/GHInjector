@@ -57,7 +57,7 @@ GuiMain::GuiMain(QWidget * parent)
 
 	if (!FileExists(GH_INJ_MOD_NAME))
 	{
-		QString failMsg = "Injection library missing:\n";
+		QString failMsg = "缺少注入库:\n";
 		failMsg += GH_INJ_MOD_NAME;
 
 		emit StatusBox(false, failMsg);
@@ -67,7 +67,7 @@ GuiMain::GuiMain(QWidget * parent)
 
 	if (!FileExists(GH_INJ_SM_NAME86))
 	{
-		QString failMsg = "Injection component missing:\n";
+		QString failMsg = "缺少注入组件:\n";
 		failMsg += GH_INJ_SM_NAME86;
 
 		emit StatusBox(false, failMsg);
@@ -77,7 +77,7 @@ GuiMain::GuiMain(QWidget * parent)
 
 	if (!FileExists(GH_INJ_DNP_NAME))
 	{
-		QString failMsg = "Injection component missing:\n";
+		QString failMsg = "缺少注入组件:\n";
 		failMsg += GH_INJ_DNP_NAME;
 
 		emit StatusBox(false, failMsg);
@@ -89,7 +89,7 @@ GuiMain::GuiMain(QWidget * parent)
 
 	if (!FileExists(GH_INJ_SM_NAME64))
 	{
-		QString failMsg = "Injection component missing:\n";
+		QString failMsg = "缺少注入组件:\n";
 		failMsg += GH_INJ_SM_NAME64;
 
 		emit StatusBox(false, failMsg);
@@ -99,7 +99,7 @@ GuiMain::GuiMain(QWidget * parent)
 
 	if (!FileExists(GH_INJ_DNP_NAME86))
 	{
-		QString failMsg = "Injection component missing:\n";
+		QString failMsg = "缺少注入组件:\n";
 		failMsg += GH_INJ_DNP_NAME86;
 
 		emit StatusBox(false, failMsg);
@@ -111,7 +111,7 @@ GuiMain::GuiMain(QWidget * parent)
 
 	if (!InjLib.Init())
 	{
-		QString failMsg = "Failed to load:\n";
+		QString failMsg = "加载失败:\n";
 		failMsg += QString::fromStdString(GH_INJ_MOD_NAMEA);
 
 		emit StatusBox(false, failMsg);
@@ -125,7 +125,7 @@ GuiMain::GuiMain(QWidget * parent)
 
 	if (!SetDebugPrivilege(true))
 	{
-		emit StatusBox(false, "Failed to enable debug privileges. This might affect the functionality of the injector.");
+		emit StatusBox(false, "启用调试权限失败。这可能会影响注入器功能。");
 	}
 
 	ui.setupUi(this);
@@ -147,7 +147,7 @@ GuiMain::GuiMain(QWidget * parent)
 
 	if (pxm_banner.isNull() || pxm_lul.isNull() || pxm_generic.isNull() || pxm_error.isNull())
 	{
-		emit StatusBox(false, "Failed to initialize one or multiple graphic files. This won't affect the functionality of the injector.");
+		emit StatusBox(false, "初始化一个或多个图形文件失败。这不会影响注入器功能。");
 	}
 
 	ui.lbl_img->setPixmap(pxm_banner);
@@ -250,12 +250,12 @@ GuiMain::GuiMain(QWidget * parent)
 		THROW("Failed to create hook scanner window.");
 	}
 
-	framelessPicker.setWindowTitle("Select a process");
+	framelessPicker.setWindowTitle("选择进程");
 	framelessPicker.setContent(gui_Picker);
 	framelessPicker.setWindowIcon(QIcon(":/GuiMain/gh_resource/GH Icon.ico"));
 	framelessPicker.setWindowModality(Qt::WindowModality::ApplicationModal);
 	
-	framelessScanner.setWindowTitle("Scan for hooks");
+	framelessScanner.setWindowTitle("扫描 Hook");
 	framelessScanner.setContent(gui_Scanner);
 	framelessScanner.setWindowIcon(QIcon(":/GuiMain/gh_resource/GH Icon.ico"));
 	framelessScanner.setWindowModality(Qt::WindowModality::ApplicationModal);
@@ -321,7 +321,7 @@ GuiMain::GuiMain(QWidget * parent)
 		ui.cb_hijack->setDisabled(false);
 		ui.cb_hijack->setChecked(false);
 		ui.cb_hijack->setDisabled(true);
-		ui.cb_hijack->setToolTip("Handle hijacking is not supported when running under WOW64.");
+		ui.cb_hijack->setToolTip("在 WOW64 下运行时不支持句柄劫持。");
 	}
 
 	if (QOperatingSystemVersion::current() < QOperatingSystemVersion::Windows10)
@@ -399,13 +399,13 @@ void GuiMain::update_process()
 		CurrentName = L"Broihon.exe";
 
 		ui.txt_arch->setText(QString::fromUtf8("\xF0\x9F\x98\x8E") + QString::fromUtf8("\xF0\x9F\x92\xA6"));
-		ui.txt_arch->setToolTip("Doin your mom doin doin your mom\nDoin your mom doin doin your mom\nDoin doin your mom doin doin your mom\nYou know we straight with doin your mom");
+		ui.txt_arch->setToolTip("Broihon 彩蛋已触发");
 		ui.txt_pid->setToolTip("");
 		ui.cmb_proc->setToolTip("");
 		ui.cmb_proc->setEditText("Broihon.exe");
 		btn_change();
 		update_proc_icon();
-		ui.lbl_proc_icon->setToolTip(QString::fromWCharArray(L"Praise Broihon \u2665\u2665\u2665"));
+		ui.lbl_proc_icon->setToolTip(QString::fromWCharArray(L"致敬 Broihon \u2665\u2665\u2665"));
 
 		return;
 	}
@@ -425,8 +425,8 @@ void GuiMain::update_process()
 			ui.txt_arch->setText("---");
 			ui.txt_pid->setToolTip("");
 			ui.cmb_proc->setToolTip("");
-			ui.txt_arch->setToolTip("Invalid process specified.");
-			ui.lbl_proc_icon->setToolTip("Can't resolve filepath.");
+			ui.txt_arch->setToolTip("指定的进程无效。");
+			ui.lbl_proc_icon->setToolTip("无法解析文件路径。");
 
 			btn_change();
 			update_proc_icon();
@@ -482,8 +482,8 @@ void GuiMain::update_process()
 			ui.txt_arch->setText("---");
 			ui.txt_pid->setToolTip("");
 			ui.cmb_proc->setToolTip("");
-			ui.txt_arch->setToolTip("Invalid process specified.");
-			ui.lbl_proc_icon->setToolTip("Can't resolve filepath.");
+			ui.txt_arch->setToolTip("指定的进程无效。");
+			ui.lbl_proc_icon->setToolTip("无法解析文件路径。");
 
 			btn_change();
 			update_proc_icon();
@@ -1271,14 +1271,14 @@ bool GuiMain::platformCheck()
 		return true;
 	}
 
-	if (!YesNoBox("Architecture conflict", "Since you're using a 64-bit version of Windows it's recommended\ntouse the 64-bit version of the injector.\n\nDo you want to switch to the 64-bit version?"))
+	if (!YesNoBox("架构冲突", "检测到你正在使用 64 位 Windows，建议使用 64 位版本的注入器。\n\n是否切换到 64 位版本？"))
 	{
 		return true;
 	}
 
 	if (!FileExistsW(GH_INJ_EXE_NAME64))
 	{
-		StatusBox(false, "\"GH Injector - x64.exe\" is missing.\n");
+		StatusBox(false, "缺少 \"GH Injector - x64.exe\"。\n");
 
 		return true;
 	}
@@ -1294,7 +1294,7 @@ bool GuiMain::platformCheck()
 	if (!CreateProcessW(x64_path.c_str(), nullptr, nullptr, nullptr, FALSE, NULL, nullptr, nullptr, &si, &pi))
 	{
 		auto err = GetLastError();
-		QString error_msg = "CreateProcessW failed. Error code: 0x";
+		QString error_msg = "CreateProcessW 失败。错误代码: 0x";
 		QString number = QStringLiteral("%1").arg(err, 8, 0x10, QLatin1Char('0'));
 		error_msg += number;
 
@@ -1368,20 +1368,20 @@ void GuiMain::cmb_proc_name_change()
 
 	if (CurrentArchitecture == ARCH::X64)
 	{
-		ui.txt_arch->setToolTip("The target is a 64-bit process.");
+		ui.txt_arch->setToolTip("目标是 64 位进程。");
 	}
 	else
 	{
 #ifdef _WIN64
-		ui.txt_arch->setToolTip("The target is a 32-bit process running under WOW64.");
+		ui.txt_arch->setToolTip("目标是在 WOW64 下运行的 32 位进程。");
 #else
 		if (!g_IsNative)
 		{
-			ui.txt_arch->setToolTip("The target is a 32-bit process running under WOW64.");
+			ui.txt_arch->setToolTip("目标是在 WOW64 下运行的 32 位进程。");
 		}
 		else
 		{
-			ui.txt_arch->setToolTip("The target is a 32-bit process.");
+			ui.txt_arch->setToolTip("目标是 32 位进程。");
 		}
 #endif
 	}
@@ -1414,20 +1414,20 @@ void GuiMain::txt_pid_change()
 
 	if (CurrentArchitecture == ARCH::X64)
 	{
-		ui.txt_arch->setToolTip("The target is a 64-bit process.");
+		ui.txt_arch->setToolTip("目标是 64 位进程。");
 	}
 	else
 	{
 #ifdef _WIN64
-		ui.txt_arch->setToolTip("The target is a 32-bit process running under WOW64.");
+		ui.txt_arch->setToolTip("目标是在 WOW64 下运行的 32 位进程。");
 #else
 		if (!g_IsNative)
 		{
-			ui.txt_arch->setToolTip("The target is a 32-bit process running under WOW64.");
+			ui.txt_arch->setToolTip("目标是在 WOW64 下运行的 32 位进程。");
 		}
 		else
 		{
-			ui.txt_arch->setToolTip("The target is a 32-bit process.");
+			ui.txt_arch->setToolTip("目标是 32 位进程。");
 		}
 #endif
 	}
@@ -1612,7 +1612,7 @@ void GuiMain::auto_loop_inject()
 
 void GuiMain::btn_reset_settings()
 {
-	if (!YesNoBox("Reset", "Are you sure you want to reset all settings?", framelessParent))
+	if (!YesNoBox("重置", "确定要重置所有设置吗？", framelessParent))
 	{
 		return;
 	}
@@ -2014,23 +2014,23 @@ void GuiMain::cmb_load_change(int index)
 	switch (mode)
 	{
 		case INJECTION_MODE::IM_LdrLoadDll:
-			ui.cmb_load->setToolTip("LdrLoadDll is an advanced injection method which uses LdrLoadDll and bypasses LoadLibrary(Ex) hooks.");
+			ui.cmb_load->setToolTip("LdrLoadDll 是高级注入方式，使用 LdrLoadDll 并绕过 LoadLibrary(Ex) Hook。");
 			break;
 
 		case INJECTION_MODE::IM_LdrpLoadDll:
-			ui.cmb_load->setToolTip("LdrpLoadDll is an advanced injection method which uses LdrpLoadDll and bypasses LdrLoadDll hooks.");
+			ui.cmb_load->setToolTip("LdrpLoadDll 是高级注入方式，使用 LdrpLoadDll 并绕过 LdrLoadDll Hook。");
 			break;
 
 		case INJECTION_MODE::IM_LdrpLoadDllInternal:
-			ui.cmb_load->setToolTip("LdrpLoadDllInternal is an experimental injection method which uses LdrpLoadDllInternal.");
+			ui.cmb_load->setToolTip("LdrpLoadDllInternal 是实验性注入方式，使用 LdrpLoadDllInternal。");
 			break;
 
 		case INJECTION_MODE::IM_ManualMap:
-			ui.cmb_load->setToolTip("ManualMap is an advanced injection technique which bypasses most module detection methods.");
+			ui.cmb_load->setToolTip("手动映射是一种高级注入技术，可绕过大多数模块检测方式。");
 			break;
 
 		default:
-			ui.cmb_load->setToolTip("LoadLibraryExW is the default injection method which simply uses LoadLibraryExW to load the dll(s).");
+			ui.cmb_load->setToolTip("LoadLibraryExW 是默认注入方式，使用 LoadLibraryExW 加载 DLL。");
 			break;
 	}
 
@@ -2062,27 +2062,27 @@ void GuiMain::cmb_create_change(int index)
 	switch (method)
 	{
 		case LAUNCH_METHOD::LM_HijackThread:
-			ui.cmb_create->setToolTip("Thread hijacking: Redirects a thread to a codecave to load the dll(s).");
+			ui.cmb_create->setToolTip("线程劫持：将线程重定向到 codecave 来加载 DLL。");
 			break;
 
 		case LAUNCH_METHOD::LM_SetWindowsHookEx:
-			ui.cmb_create->setToolTip("SetWindowsHookEx: Adds a hook into the window callback list which then loads the dll(s).");
+			ui.cmb_create->setToolTip("SetWindowsHookEx：向窗口回调列表添加 Hook，然后加载 DLL。");
 			break;
 
 		case LAUNCH_METHOD::LM_KernelCallback:
-			ui.cmb_create->setToolTip("KernelCallback: Replaces the __fnCOPYDATA function from the kernel callback table to execute the codecave which then loads the dll(s).");
+			ui.cmb_create->setToolTip("KernelCallback：替换内核回调表中的 __fnCOPYDATA 函数以执行 codecave，然后加载 DLL。");
 			break;
 
 		case LAUNCH_METHOD::LM_QueueUserAPC:
-			ui.cmb_create->setToolTip("QueueUserAPC: Registers an asynchronous procedure call to the process' threads which then loads the dll(s).");
+			ui.cmb_create->setToolTip("QueueUserAPC：向进程线程注册异步过程调用，然后加载 DLL。");
 			break;
 
 		case LAUNCH_METHOD::LM_FakeVEH:
-			ui.cmb_create->setToolTip("FakeVEH: Creates and registers a fake VEH which then loads the dll(s) after a page guard exception has been triggered.");
+			ui.cmb_create->setToolTip("FakeVEH：创建并注册伪 VEH，在触发页面保护异常后加载 DLL。");
 			break;
 
 		default:
-			ui.cmb_create->setToolTip("NtCreateThreadEx: Creates a simple remote thread to load the dll(s).");
+			ui.cmb_create->setToolTip("NtCreateThreadEx：创建简单的远程线程来加载 DLL。");
 			break;
 	}
 
@@ -2105,15 +2105,15 @@ void GuiMain::cmb_peh_change(int index)
 	switch (index)
 	{
 		case 0:
-			ui.cmb_peh->setToolTip("Keep PEH: Doesn't modify the PE header of the dll(s).");
+			ui.cmb_peh->setToolTip("保留 PEH：不修改 DLL 的 PE 头。");
 			break;
 
 		case 1:
-			ui.cmb_peh->setToolTip("Erase PEH: Erases the PE header by wrting 0's to it to avoid detections.");
+			ui.cmb_peh->setToolTip("擦除 PEH：将 PE 头写入 0 以避免检测。");
 			break;
 
 		default:
-			ui.cmb_peh->setToolTip("Fake PEH: Replaces the PE header with the PE header of the ntdll.dll.");
+			ui.cmb_peh->setToolTip("伪造 PEH：使用 ntdll.dll 的 PE 头替换原 PE 头。");
 			break;
 	}
 }
@@ -2168,7 +2168,7 @@ void GuiMain::cb_hijack_clicked()
 {
 	if (hijackWarning && ui.cb_hijack->isChecked())
 	{
-		auto ret = YesNoBox("Warning", "This option will try to hijack a handle from another process\nwhich can be a system process.\nUnder rare circumstances this can cause a system crash.\nDo you want to enable this option anyway?", framelessParent, QMessageBox::Icon::Warning);
+		auto ret = YesNoBox("警告", "此选项会尝试从其他进程劫持句柄，\n该进程可能是系统进程。\n少数情况下可能导致系统崩溃。\n仍要启用此选项吗？", framelessParent, QMessageBox::Icon::Warning);
 		if (!ret)
 		{
 			ui.cb_hijack->setChecked(false);
@@ -2276,7 +2276,7 @@ QTreeWidgetItem * GuiMain::add_file_to_list(QString path, bool active, int flag)
 		btn_options->setFixedWidth(20);
 		btn_options->setFixedHeight(20);
 		btn_options->setIcon(QIcon(":/GuiMain/gh_resource/cog.ico"));
-		btn_options->setToolTip("Configure .NET launch options");
+		btn_options->setToolTip("配置 .NET 启动选项");
 		
 		ui.tree_files->setItemWidget(item, FILE_LIST_IDX_BUTTON_OPTIONS, btn_options);
 		connect(btn_options, SIGNAL(clicked()), this, SLOT(dot_net_options()));
@@ -2449,7 +2449,7 @@ void GuiMain::inject_file()
 		}
 		else
 		{
-			emit StatusBox(false, "Invalid PID");
+			emit StatusBox(false, "PID 无效");
 
 			return;
 		}
@@ -2463,7 +2463,7 @@ void GuiMain::inject_file()
 		}
 		else
 		{
-			emit StatusBox(false, "Invalid process name");
+			emit StatusBox(false, "进程名无效");
 
 			return;
 		}
@@ -2552,21 +2552,21 @@ void GuiMain::inject_file()
 
 	if (!InjLib.LoadingStatus())
 	{
-		emit StatusBox(false, "The GH injection library couldn't be found or wasn't loaded correctly.");
+		emit StatusBox(false, "找不到 GH 注入库，或未正确加载。");
 
 		return;
 	}
 
 	if (InjLib.GetSymbolState() != INJ_ERR_SUCCESS)
 	{
-		emit StatusBox(false, "PDB download not finished.");
+		emit StatusBox(false, "PDB 下载尚未完成。");
 
 		return;
 	}
 
 	if (InjLib.GetImportState() != INJ_ERR_SUCCESS)
 	{
-		emit StatusBox(false, "Import handler not finished.");
+		emit StatusBox(false, "导入处理尚未完成。");
 
 		return;
 	}
@@ -2628,7 +2628,7 @@ void GuiMain::inject_file()
 
 	if (items.empty() && dot_net_items.empty())
 	{
-		emit StatusBox(false, "No file(s) selected");
+		emit StatusBox(false, "未选择文件");
 
 		return;
 	}
@@ -2792,7 +2792,7 @@ void GuiMain::inject_file()
 
 		if (res != 0)
 		{
-			sprintf_s(buffer, "Injection (%d/%d) failed:\n  Error = %08X\n", inj_count, (int)items.size(), res);
+			sprintf_s(buffer, "注入 (%d/%d) 失败:\n  错误 = %08X\n", inj_count, (int)items.size(), res);
 			g_print("Check the error log for more information\n");
 		}
 		else
@@ -2803,7 +2803,7 @@ void GuiMain::inject_file()
 				result = memory_inj_data.hDllOut;
 			}
 
-			sprintf_s(buffer, "Injection (%d/%d) succeeded:\n  %ls = %p\n", inj_count, (int)items.size(), dll_name.c_str(), result);
+			sprintf_s(buffer, "注入 (%d/%d) 成功:\n  %ls = %p\n", inj_count, (int)items.size(), dll_name.c_str(), result);
 		}
 
 		results.push_back(std::string(buffer));
@@ -2888,12 +2888,12 @@ void GuiMain::inject_file()
 
 		if (res != 0)
 		{
-			sprintf_s(buffer, ".NET injection (%d/%d) failed:\n  Error = %08X\n", dot_net_inj_count, (int)dot_net_items.size(), res);
+			sprintf_s(buffer, ".NET 注入 (%d/%d) 失败:\n  错误 = %08X\n", dot_net_inj_count, (int)dot_net_items.size(), res);
 			g_print("Check the error log for more information\n");
 		}
 		else
 		{
-			sprintf_s(buffer, ".NET injection (%d/%d) succeeded:\n  %ls = %p\n", dot_net_inj_count, (int)dot_net_items.size(), dll_name.c_str(), dot_net_inj_data.hDllOut);
+			sprintf_s(buffer, ".NET 注入 (%d/%d) 成功:\n  %ls = %p\n", dot_net_inj_count, (int)dot_net_items.size(), dll_name.c_str(), dot_net_inj_data.hDllOut);
 		}
 
 		results.push_back(std::string(buffer));
@@ -2924,14 +2924,14 @@ void GuiMain::btn_tooltip_change()
 	if (!tooltipsEnabled)
 	{
 		duration = -1;
-		ui.btn_tooltip->setText("&Disable tooltips");
+		ui.btn_tooltip->setText("禁用提示(&D)");
 		tooltipsEnabled = true;
 
 		g_print("Tooltips enabled\n");
 	}
 	else
 	{
-		ui.btn_tooltip->setText("&Enable tooltips");
+		ui.btn_tooltip->setText("启用提示(&E)");
 		tooltipsEnabled = false;
 
 		g_print("Tooltips disabled\n");
@@ -3070,7 +3070,7 @@ void GuiMain::btn_generate_shortcut()
 		}
 		else
 		{
-			emit StatusBox(false, "Invalid PID");
+			emit StatusBox(false, "PID 无效");
 
 			return;
 		}
@@ -3088,7 +3088,7 @@ void GuiMain::btn_generate_shortcut()
 		}
 		else
 		{
-			emit StatusBox(false, "The specified process doesn't exist.");
+			emit StatusBox(false, "指定的进程不存在。");
 
 			return;
 		}
@@ -3161,7 +3161,7 @@ void GuiMain::btn_generate_shortcut()
 
 	if (!fileFound)
 	{
-		emit StatusBox(false, "No valid file selected.");
+		emit StatusBox(false, "未选择有效文件。");
 
 		return;
 	}
@@ -3250,7 +3250,7 @@ void GuiMain::btn_generate_shortcut()
 		}
 	}
 
-	auto silent = YesNoBox("Silent mode", "Do you want the shortcut to be in silent mode?\nThis means that no console window will be spawned and\nthere will be no notifications on the injection status.", framelessParent);
+	auto silent = YesNoBox("静默模式", "是否让快捷方式使用静默模式？\n这表示不会生成控制台窗口，\n也不会显示注入状态通知。", framelessParent);
 	if (silent)
 	{
 		shortCut += L"-silent ";
@@ -3262,8 +3262,8 @@ void GuiMain::btn_generate_shortcut()
 	auto hr = CreateLinkWrapper(fileName, QString::fromStdWString(shortCut));
 	if (SUCCEEDED(hr))
 	{
-		QString msg = "The shortcut was created succesfully with the following name:\n" + fileName + "\n\nOpen shortcut location?";
-		if (YesNoBox("Success", "The shortcut was created succesfully with the following name:\n" + fileName + "\n\nDo you want to open the shortcut location?", framelessParent))
+		QString msg = "快捷方式创建成功，名称如下:\n" + fileName + "\n\nOpen shortcut location?";
+		if (YesNoBox("成功", "快捷方式创建成功，名称如下:\n" + fileName + "\n\n是否打开快捷方式所在位置？", framelessParent))
 		{
 			//stolen from here:
 			//https://stackoverflow.com/questions/15300999/open-windows-explorer-directory-select-a-specific-file-in-delphi
@@ -3284,7 +3284,7 @@ void GuiMain::btn_generate_shortcut()
 	}
 	else
 	{
-		QString error_msg = "Shortcut generation failed. Error code: 0x";
+		QString error_msg = "快捷方式生成失败。错误代码: 0x";
 		QString number = QStringLiteral("%1").arg((DWORD)hr, 8, 0x10, QLatin1Char('0'));
 		error_msg += number;
 
@@ -3353,7 +3353,7 @@ void GuiMain::setup()
 	{
 		g_Console->update_external();
 
-		QString msg = "The injector requires PDB files for the ntdll.dll to work.\nThese files will be downloaded from the Microsoft Symbol Server\nand will take up about ";
+		QString msg = "注入器需要 ntdll.dll 的 PDB 文件才能工作。\n这些文件将从 Microsoft Symbol Server 下载，\n大约占用 ";
 
 		auto CurrentOS = QOperatingSystemVersion::current();
 		if (CurrentOS >= QOperatingSystemVersion::Windows7 && CurrentOS < QOperatingSystemVersion::Windows8) //no == operator provided
@@ -3365,9 +3365,9 @@ void GuiMain::setup()
 			msg += QString::number(5);
 		}
 
-		msg += "MB.\n\nDo you want to download the files now?";
+		msg += "MB。\n\n是否立即下载这些文件？";
 		
-		if (YesNoBox("PDB Download", msg, framelessParent))
+		if (YesNoBox("PDB 下载", msg, framelessParent))
 		{
 			InjLib.StartDownload();
 			ShowPDBDownload(&InjLib);
@@ -3403,17 +3403,17 @@ void GuiMain::update()
 	auto cmp = newest_version.compare(current_version);
 	if (cmp > 0)
 	{
-		std::wstring update_txt = L"This version of the GH Injector is outdated and might contain life-threatening bugs. The newest version is V" + newest_version + L". Click to update.";
+		std::wstring update_txt = L"当前 GH Injector 版本已过期，可能包含严重问题。最新版本是 V" + newest_version + L"。点击更新。";
 		ui.btn_version->setToolTip(QString::fromStdWString(update_txt));
 		ui.btn_version->setStyleSheet("background-color: red");
 	}
 	else if (cmp < 0)
 	{
-		ui.btn_version->setToolTip("Holy shit, your version is from the future.");
+		ui.btn_version->setToolTip("你的版本号看起来来自未来。");
 	}
 	else
 	{
-		ui.btn_version->setToolTip("You are using the newest version of the GH Injector.");
+		ui.btn_version->setToolTip("你正在使用最新版本的 GH Injector。");
 
 		g_print("This version is up to date\n");
 	}
