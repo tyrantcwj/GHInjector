@@ -94,16 +94,16 @@ jobs:
           $ErrorActionPreference = "Stop"
           New-Item -ItemType Directory -Force -Path artifact | Out-Null
 
-          if (-not (Test-Path "Release\x64\GH Injector - x64.exe")) {
-            throw "Expected GUI executable was not produced: Release\x64\GH Injector - x64.exe"
+          if (-not (Test-Path "GH Injector GUI\Release\x64\GH Injector - x64.exe")) {
+            throw "Expected GUI executable was not produced: GH Injector GUI\Release\x64\GH Injector - x64.exe"
           }
 
-          if (Test-Path "Release\x64") {
-            Copy-Item "Release\x64\*" artifact -Recurse -Force
+          if (Test-Path "GH Injector GUI\Release\x64") {
+            Copy-Item "GH Injector GUI\Release\x64\*" artifact -Recurse -Force
           }
 
-          if (Test-Path "Release\x86") {
-            Copy-Item "Release\x86\*" artifact -Recurse -Force
+          if (Test-Path "GH Injector\Release\x86") {
+            Copy-Item "GH Injector\Release\x86\*" artifact -Recurse -Force
           }
 
           if (Test-Path "deps\GH-Injector-Library\Release\x64") {
