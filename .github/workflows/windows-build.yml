@@ -57,6 +57,20 @@ jobs:
           reg add "HKCU\Software\Digia\Versions" /v msvc2019_64 /t REG_SZ /d "$env:QT_ROOT_DIR" /f
           reg add "HKCU\Software\Digia\Versions" /v DefaultQtVersion /t REG_SZ /d "msvc2019_64" /f
 
+      - name: Normalize dependency source encoding
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          Get-ChildItem "deps/GH-Injector-Library" -Recurse -Include *.h,*.hpp,*.cpp,*.c |
+            ForEach-Object {
+              $bytes = [System.IO.File]::ReadAllBytes($_.FullName)
+              if ($bytes.Length -ge 6 -and
+                  $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF -and
+                  $bytes[3] -eq 0xEF -and $bytes[4] -eq 0xBB -and $bytes[5] -eq 0xBF) {
+                [System.IO.File]::WriteAllBytes($_.FullName, $bytes[3..($bytes.Length - 1)])
+              }
+            }
+
       - name: Build injector library x64
         shell: cmd
         working-directory: deps/GH-Injector-Library
