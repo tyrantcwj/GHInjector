@@ -76,6 +76,10 @@ jobs:
         working-directory: deps/GH-Injector-Library
         run: msbuild "GH Injector Library.sln" /m /p:Configuration=Release /p:Platform=x64 /p:PreferredToolArchitecture=x64 /p:CodePage=65001 /v:minimal
 
+      - name: Restore .NET parser packages
+        shell: cmd
+        run: dotnet restore "GH .NET Parser\GH .NET Parser.csproj"
+
       - name: Build GUI x64
         shell: cmd
         run: msbuild "GH Injector GUI.sln" /m /p:Configuration=Release /p:Platform=x64 /p:PreferredToolArchitecture=x64 /p:CodePage=65001 /v:minimal
