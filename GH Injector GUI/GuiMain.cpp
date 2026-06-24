@@ -1687,7 +1687,7 @@ void GuiMain::update_height()
 
 	if (ui.centralWidget && ui.centralWidget->layout())
 	{
-		new_height = max(new_height, ui.centralWidget->layout()->sizeHint().height() + 12);
+		new_height = qMax(new_height, ui.centralWidget->layout()->sizeHint().height() + 12);
 	}
 
 	framelessParent->setFixedHeight(new_height);
