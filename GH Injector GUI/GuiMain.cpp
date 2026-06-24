@@ -1666,23 +1666,31 @@ void GuiMain::update_height()
 {
 	bool b1 = ui.fr_cloak->isVisible();
 	bool b2 = ui.fr_adv->isVisible();
+	int new_height = Height_small;
 
 	if (!b1 && !b2)
 	{
-		framelessParent->setFixedHeight(Height_small);
+		new_height = Height_small;
 	}
 	else if (b1 && !b2)
 	{
-		framelessParent->setFixedHeight(Height_medium_s);
+		new_height = Height_medium_s;
 	}
 	else if (!b1 && b2)
 	{
-		framelessParent->setFixedHeight(Height_medium_b);
+		new_height = Height_medium_b;
 	}
 	else
 	{
-		framelessParent->setFixedHeight(Height_big);
+		new_height = Height_big;
 	}
+
+	if (ui.centralWidget && ui.centralWidget->layout())
+	{
+		new_height = max(new_height, ui.centralWidget->layout()->sizeHint().height() + 12);
+	}
+
+	framelessParent->setFixedHeight(new_height);
 
 	//force window update beacause it doesn't update properly when decreasing the size after launch but all the other times???
 	framelessParent->move(framelessParent->pos());
@@ -2573,6 +2581,7 @@ void GuiMain::inject_file()
 
 	std::vector<std::wstring> items; //native dlls: { path }
 	std::vector<std::pair<std::wstring, std::vector<std::wstring>>> dot_net_items; //dot net dlls: { path, { namespace, class, method, arg }}
+	int checked_file_count = 0;
 
 	QTreeWidgetItemIterator it(ui.tree_files);
 	for (; (*it) != Q_NULLPTR; ++it)
@@ -2581,6 +2590,8 @@ void GuiMain::inject_file()
 		{
 			continue;
 		}
+
+		++checked_file_count;
 
 		file_arch = StrToArchW((*it)->text(FILE_LIST_IDX_PLATFORM).toStdWString());
 		if (file_arch == ARCH::NONE)
@@ -2628,12 +2639,20 @@ void GuiMain::inject_file()
 
 	if (items.empty() && dot_net_items.empty())
 	{
-		emit StatusBox(false, "未选择文件");
+		if (checked_file_count > 0)
+		{
+			emit StatusBox(false, "已勾选文件，但没有可注入项目。\n请检查 DLL 架构是否匹配目标进程、文件路径是否存在，或 .NET 选项是否完整。");
+		}
+		else
+		{
+			emit StatusBox(false, "未选择文件");
+		}
 
 		return;
 	}
 
 	std::vector<std::string> results;
+	bool all_success = true;
 	int inj_count = 1;
 	int dot_net_inj_count = 1;
 
@@ -2774,6 +2793,8 @@ void GuiMain::inject_file()
 				g_print("Failed to interrupt injection thread\n");
 			}
 
+			emit StatusBox(false, "注入超时，已尝试中断注入线程。");
+
 			return;
 		}
 		else
@@ -2792,6 +2813,7 @@ void GuiMain::inject_file()
 
 		if (res != 0)
 		{
+			all_success = false;
 			sprintf_s(buffer, "注入 (%d/%d) 失败:\n  错误 = %08X\n", inj_count, (int)items.size(), res);
 			g_print("Check the error log for more information\n");
 		}
@@ -2875,6 +2897,8 @@ void GuiMain::inject_file()
 				g_print("Failed to interrupt .NET injection thread\n");
 			}
 
+			emit StatusBox(false, ".NET 注入超时，已尝试中断注入线程。");
+
 			return;
 		}
 		else
@@ -2888,6 +2912,7 @@ void GuiMain::inject_file()
 
 		if (res != 0)
 		{
+			all_success = false;
 			sprintf_s(buffer, ".NET 注入 (%d/%d) 失败:\n  错误 = %08X\n", dot_net_inj_count, (int)dot_net_items.size(), res);
 			g_print("Check the error log for more information\n");
 		}
@@ -2913,6 +2938,17 @@ void GuiMain::inject_file()
 	for (const auto & i : results)
 	{
 		g_print_raw(i.c_str());
+	}
+
+	if (!results.empty())
+	{
+		QString result_msg;
+		for (const auto & i : results)
+		{
+			result_msg += QString::fromUtf8(i.c_str());
+		}
+
+		StatusBox(all_success, result_msg.trimmed());
 	}
 }
 

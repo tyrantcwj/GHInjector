@@ -444,7 +444,7 @@
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;对调试器隐藏线程。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>对调试器隐藏</string>
+               <string>隐藏调试器</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -463,7 +463,7 @@
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;跳过对 DllMain 的 DLL_THREAD_ATTACH/DETACH 调用。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>跳过线程附加</string>
+               <string>跳过附加</string>
               </property>
              </widget>
             </item>
@@ -479,7 +479,7 @@
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;用另一个线程 ID 替换该线程 TEB 中的线程 ID。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>伪造 TEB 中的 TID</string>
+               <string>伪造 TID</string>
               </property>
              </widget>
             </item>
@@ -495,7 +495,7 @@
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;将线程起始地址设置为进程入口点。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>伪造起始地址</string>
+               <string>伪造起址</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -732,7 +732,7 @@
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;从进程环境块列表中移除 DLL 条目（手动映射无需此项）。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>从 PEB 取消链接</string>
+               <string>PEB 取消链接</string>
               </property>
              </widget>
             </item>
